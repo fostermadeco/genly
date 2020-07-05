@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  dnsmasq:
+    image: andyshinn/dnsmasq
+    ports:
+      - "127.0.0.1:53:53/tcp"
+      - "127.0.0.1:53:53/udp"
+    cap_add:
+      - NET_ADMIN
+    command: --address=/test/127.0.0.1
+    restart: always
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ${HOME}/.genly/nginx/certs:/etc/nginx/certs
+    restart: always
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+    expose:
+      - 8025
+    depends_on:
+      - nginx-proxy
+    environment:
+      VIRTUAL_HOST: mailhog.test
+      VIRTUAL_PORT: 8025
+    restart: always
+
+  mysql57:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ${HOME}/.genly/mysql57:/var/lib/mysql:rw
+    ports:
+      - "3307:3306"
+    restart: always
+
+  postgres12:
+    image: postgres:12.3
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ${HOME}/.genly/postgres12:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: always
+
+networks:
+  default:
+    external:
+      name: genly
