@@ -21,7 +21,7 @@ Genly requires several Symfony components at version `^4.4`, because this is the
 This means you will have to upgrade Rokanan in order to have them installed side-by-side. Run
 
 ```bash
-composer require fostermadeco/rokanan dev-require-php7
+composer global require fostermadeco/rokanan dev-require-php7
 ```
 
 This will install a new version of Rokanan with the same requirements as Genly. If you require any conflicting Symfony components at ^3.4 in your root global project (as described in the [Rokanan README](https://github.com/fostermadeco/rokanan#installation), you will have to remove them first.
