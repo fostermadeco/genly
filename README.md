@@ -6,7 +6,10 @@ Like [Rokanan](https://github.com/fostermadeco/rokanan), it is named after an Ur
 
 ## Prerequisites
 
-PHP 7.1.3 and [Composer](https://getcomposer.org/)
+* PHP 7.1.3
+* [Composer](https://getcomposer.org/)
+* [Docker Desktop](https://www.docker.com/products/docker-desktop)
+* No running service listening to ports 80 or 443 on localhost
 
 ## Installation
 
