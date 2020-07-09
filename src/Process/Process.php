@@ -6,7 +6,7 @@ use Symfony\Component\Process\Process as BaseProcess;
 
 class Process extends BaseProcess
 {
-    public static function create(array $command, bool $pty = true, bool $tty = true, $cwd = null): BaseProcess
+    public static function create(array $command, $cwd = null, bool $pty = true, bool $tty = true): BaseProcess
     {
         $process = new BaseProcess($command, $cwd);
 

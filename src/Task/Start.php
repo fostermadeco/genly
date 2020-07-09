@@ -11,7 +11,7 @@ class Start extends AbstractTask
     {
         $command = array_merge($context->composeCommand, [$this->getName(), $service]);
         $context->output->writeln("<comment>Running `".join(' ', $command)."` in {$context->cwd}</comment>");
-        Process::create($command, true, true, $context->cwd)->mustRun();
+        Process::create($command, $context->cwd)->mustRun();
         $context->output->writeln("<info>Service '{$service}' started. ✔</info>");
     }
 }

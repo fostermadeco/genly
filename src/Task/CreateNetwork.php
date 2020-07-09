@@ -13,7 +13,7 @@ class CreateNetwork
 
     public function __invoke(AbstractCommand $context)
     {
-        $process = Process::create(self::CHECK, false, false)->mustRun();
+        $process = Process::create(self::CHECK, null, false, false)->mustRun();
 
         $context->output->writeln('<info>Creating "'.self::NETWORK_NAME.'" network if it does not exist.</info>');
 
