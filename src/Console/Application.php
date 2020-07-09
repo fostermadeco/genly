@@ -19,6 +19,7 @@ class Application extends BaseApplication
             new Command\Initialize(),
             new Command\Up(),
             new Command\Down(),
+            new Command\InitializeProject(),
         ]);
     }
 }

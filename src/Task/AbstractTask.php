@@ -11,8 +11,8 @@ abstract class AbstractTask
         return strtolower((new \ReflectionClass(static::class))->getShortName());
     }
 
-    public function getCommand(AbstractCommand $context, ?array $options = [])
+    public function getCommand(AbstractCommand $context, ?array ...$options)
     {
-        return array_merge($context->composeCommand, [$this->getName()], $options);
+        return array_merge($context->composeCommand, [$this->getName()], ...$options);
     }
 }
