@@ -10,7 +10,7 @@ class CreateDomainResolver
 {
     const PATH = '/etc/resolver/test';
     const LINE = 'nameserver 127.0.0.1';
-    const COMMAND = 'sudo touch '.self::PATH.' && echo "'.self::LINE.'\n" | sudo tee '.self::PATH;
+    const COMMAND = '[ -d /etc/resolver ] || sudo mkdir /etc/resolver ; sudo touch '.self::PATH.' && echo "'.self::LINE.'\n" | sudo tee '.self::PATH;
     const RESTART = ['sudo', 'shutdown', '-r', 'now'];
 
     public function __invoke(AbstractCommand $context)
