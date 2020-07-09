@@ -2,7 +2,7 @@
 
 Genly is a utility for managing a shared Docker network and other common services for local development environments. It is heavily inspired by [Dash](https://github.com/dreadfullyposh/dash).
 
-Like [Rokanan](https://github.com/fostermadeco/rokanan), it is named after an Ursula Leguin character.
+Like [Rokanan](https://github.com/fostermadeco/rokanan), it is named after an Ursula Le Guin character.
 
 ## Prerequisites
 
