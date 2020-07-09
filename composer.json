@@ -2,6 +2,7 @@
     "name": "fostermadeco/genly",
     "description": "Utility for managing a shared Docker network for local development environments.",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Jonathan Cox",
