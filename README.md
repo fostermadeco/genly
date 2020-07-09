@@ -58,13 +58,13 @@ In Docker projects, commands should only be run inside containers and not on the
 genly composer [...]
 ``` 
 
-For example, `genly composer install --no-dev --no-scripts --classmap-authoritative` will be run in the `web` container.
+For example, `composer install --no-dev --no-scripts --classmap-authoritative` will be run in the `web` container.
 
 ```bash
 genly npm [...]
 ```
 
-For example, `genly npm install` will be run in the `node` container.
+For example, `npm install` will be run in the `node` container.
 
 With Webpack and BrowserSync configured correctly, `genly npm run watch` can even be run, with live-reloading available at https://sync.example.test.
 
