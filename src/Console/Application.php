@@ -20,6 +20,8 @@ class Application extends BaseApplication
             new Command\Up(),
             new Command\Down(),
             new Command\InitializeProject(),
+            new Command\Composer(),
+            new Command\Npm(),
         ]);
     }
 }
