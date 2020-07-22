@@ -32,12 +32,5 @@ class InitializeProject extends AbstractCommand
 
         (new Task\Up())($this);
         (new Task\Start())($this, 'web');
-
-        $output->writeln('<info>Restarting nginx-proxy.</info>');
-
-        $this->cwd = dirname(self::COMMON_DOCKER_COMPOSE_PATH);
-        (new Task\Restart())($this, 'nginx-proxy');
-
-        $output->writeln('<comment>Nginx restarted — it may up to 90 seconds before nginx serves your local projects.</comment>');
     }
 }
