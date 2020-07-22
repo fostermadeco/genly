@@ -53,8 +53,10 @@ class AbstractCommand extends BaseCommand
             $config = Yaml::parseFile(self::COMMON_DOCKER_COMPOSE_PATH);
             $this->cwd = dirname(realpath(self::COMMON_DOCKER_COMPOSE_PATH));
         } else {
-            $config = Yaml::parseFile('docker-compose.yml');
+            $file = file_exists('genly.docker-compose.yml') ? 'genly.docker-compose.yml' : 'docker-compose.yml';
+            $config = Yaml::parseFile($file);
             $this->cwd = getcwd();
+            $this->composeCommand = array_merge($this->composeCommand, ['--file', $file]);
         }
 
         $this->config = new Config($config);

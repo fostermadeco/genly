@@ -24,7 +24,7 @@ services:
   mailhog:
     image: mailhog/mailhog
     ports:
-      - "1025:1025"
+      - "1026:1025"
     expose:
       - 8025
     depends_on:
