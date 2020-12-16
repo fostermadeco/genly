@@ -28,7 +28,10 @@ class InitializeProject extends AbstractCommand
         parent::execute($input, $output);
 
         (new Task\CreateCertificate())($this, $this->config->getVirtualHostForService('web'));
-        (new Task\CreateCertificate())($this, $this->config->getVirtualHostForService('node'));
+
+        if ($node = $this->config->getVirtualHostForService('node')) {
+            (new Task\CreateCertificate())($node);
+        }
 
         (new Task\Up())($this);
         (new Task\Start())($this, 'web');
