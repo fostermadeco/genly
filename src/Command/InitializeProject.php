@@ -30,7 +30,7 @@ class InitializeProject extends AbstractCommand
         (new Task\CreateCertificate())($this, $this->config->getVirtualHostForService('web'));
 
         if ($node = $this->config->getVirtualHostForService('node')) {
-            (new Task\CreateCertificate())($node);
+            (new Task\CreateCertificate())($this, $node);
         }
 
         (new Task\Up())($this);
