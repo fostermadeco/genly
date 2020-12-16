@@ -11,7 +11,7 @@ class Up extends AbstractTask
     {
         $command = $this->getCommand($context, ['--no-start']);
         $context->output->writeln("<comment>Running `".join(' ', $command)."` in {$context->cwd}</comment>");
-        Process::create($command, $context->cwd)->mustRun();
+        (Process::create($command, $context->cwd))->setTimeout(null)->mustRun();
         $context->output->writeln('<info>Containers created. ✔</info>');
     }
 }
