@@ -71,4 +71,45 @@ For example, `genly npm install` will run `npm install` in the `node` container.
 
 With Webpack and BrowserSync configured correctly, `genly npm run watch` can even be run, with live-reloading available at https://sync.example.test.
 
-(TODO: move example config files here).
+## Example docker-compose file
+
+Here is a basic docker-compose file.
+
+```yaml
+version: '3'
+
+services:
+  web:
+    image: webdevops/php-nginx:7.4
+    expose:
+      - 80
+    working_dir: /app
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      VIRTUAL_HOST: example.test
+      HTTPS_METHOD: redirect
+    volumes:
+      - .:/app:rw,cached
+    networks:
+      - genly
+
+  node:
+    image: node:12
+    expose:
+      - 443
+    working_dir: /app
+    environment:
+      VIRTUAL_HOST: sync.example.test
+    volumes:
+      - .:/app:rw,cached
+    command: npm run watch
+    links:
+      - "web:example.test"
+    networks:
+      - genly
+
+networks:
+  genly:
+    external:
+      name: genly                 
+```
