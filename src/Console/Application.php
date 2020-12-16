@@ -22,6 +22,7 @@ class Application extends BaseApplication
             new Command\InitializeProject(),
             new Command\Composer(),
             new Command\Npm(),
+            new Command\Run(),
         ]);
     }
 }
