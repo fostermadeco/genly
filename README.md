@@ -1,4 +1,4 @@
-# Genly
+# [DEPRECATED] Genly
 
 Genly is a utility for managing a shared Docker network and other common services for local development environments. It is heavily inspired by [Dash](https://github.com/dreadfullyposh/dash).
 
